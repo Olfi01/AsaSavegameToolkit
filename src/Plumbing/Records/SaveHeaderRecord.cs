@@ -67,7 +67,10 @@ public class SaveHeaderRecord
         
         // Read name table offset
         var nameTableOffset = archive.ReadInt32();
-        
+
+        // Read game time
+        var gameTime = archive.ReadDouble();
+
         // Skip to name table
         archive.Position = nameTableOffset;
         
@@ -77,6 +80,7 @@ public class SaveHeaderRecord
         return new SaveHeaderRecord
         {
             SaveVersion = saveVersion,
+            GameTime = gameTime,
             NameTable = nameTable
         };
     }
